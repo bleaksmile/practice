@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Cars</title>
+</head>
+<body>
+<div class="container">
+    <br/>
+<form action="#" method="get" th:action="@{/search}">
+    <input type="text" name="plate" pattern="^[A-Za-z0-9-]{1,7}" maxlength="7">
+    <input type="submit" value="Search">
+</form>
+    </br>
+    <div>
+        <a class="btn btn-info" th:href="@{'/search?police=1'}" th:text="'Police cars only'"></a>
+        <a class="btn btn-info" th:href="@{'/search?diplomat=1'}" th:text="'Diplomats only'"> </a>
+    </div>
+   <br/>
+    <div th:if="${error}" th:text="${error}"> </div>
+<table th:unless = "${error}" class="table table-striped">
+        <thead>
+        <tr>
+            <th>PLATE</th>
+            <th>CAR BRAND</th>
+            <th>CAR MODEL</th>
+            <th>COLOR</th>
+            <th>YEAR</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car : ${cars}">
+            <td id="plate" th:text="${car.getPlate()}"></td>
+            <td> <a name="brand" th:href="@{/search/{brand}(brand= ${car.getCar_brand()})}" th:text="${car.getCar_brand()}"></a> </td>
+            <td id="car_model" th:text="${car.getCar_model()}"></td>
+            <td id="color" th:text="${car.getColor()}"></td>
+            <td id="year" th:text="${car.getYear()}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+</html>

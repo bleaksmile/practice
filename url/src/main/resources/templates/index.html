@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>URL</title>
+</head>
+<body>
+<div th:if="${error}" th:text="${error}"></div>
+<div th:if="${message}" th:text="${message}" ></div>
+<form action="#" th:action="@{/save-link}" method="post" th:object="${url}">
+    <label for="url">URL</label>
+    <div><input type="url" name="url" id="url" th:field="*{url}"></div>
+    <label for="alias">Alias</label>
+    <div><input type="text" name="alias" id="alias" th:field="*{alias}"></div>
+    <input type="submit" name="Submit" value="Submit">
+</form>
+</body>
+</html>
