@@ -9,7 +9,7 @@
 <div th:if="${message}" th:text="${message}" ></div>
 <form action="#" th:action="@{/save-link}" method="post" th:object="${url}">
     <label for="url">URL</label>
-    <div><input type="url" name="url" id="url" th:field="*{url}"></div>
+    <div><input type="url" name="url" id="url" th:field="*{link}"></div>
     <label for="alias">Alias</label>
     <div><input type="text" name="alias" id="alias" th:field="*{alias}"></div>
     <input type="submit" name="Submit" value="Submit">

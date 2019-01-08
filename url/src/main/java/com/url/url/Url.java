@@ -11,8 +11,10 @@ import java.net.URL;
 @Entity
 public class Url {
   @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
   private String alias;
-  private URL url;
+  private URL link;
   private Integer hitCount;
   @JsonIgnore
   private String secretCode;
@@ -23,16 +25,16 @@ public class Url {
 
   public Url(URL url, String alias) {
     this();
-    this.url = url;
+    this.link = url;
     this.alias = alias;
   }
 
-  public URL getUrl() {
-    return url;
+  public URL getLink() {
+    return link;
   }
 
-  public void setUrl(URL url) {
-    this.url = url;
+  public void setLink (URL url) {
+    this.link = url;
   }
 
   public String getAlias() {
@@ -41,6 +43,14 @@ public class Url {
 
   public void setAlias(String alias) {
     this.alias = alias;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public String getSecretCode() {
