@@ -1,6 +1,7 @@
 package com.practice.cars;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,8 +45,15 @@ public class CarController {
 
   @RequestMapping(value = "/api/search/{brand}")
   @ResponseBody
-  public ResponseResult responseWithBrand(@PathVariable("brand") String brand){
-    return new ResponseResult(carRepository.findByBrandContains(brand));
+  public ResponseEntity responseWithBrand(@PathVariable("brand") String brand){
+    ResponseResult result = new ResponseResult();
+    if(!carRepository.findByBrandContains(brand).isEmpty()){
+      result.setResult("ok");
+      result.setData(carRepository.findByBrandContains(brand));
+    } else{
+      result.setResult("not ok");
+    }
+    return ResponseEntity.ok(result);
 
   }
 

@@ -1,6 +1,7 @@
 package com.practice.cars;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResponseResult {
@@ -9,11 +10,16 @@ public class ResponseResult {
 
 
   public ResponseResult() {
-    this.result="ok";
+    this.data = new ArrayList<>();
   }
 
   public ResponseResult(List<Car> data) {
     this();
+    this.data = data;
+  }
+
+  public ResponseResult(String result, List<Car> data) {
+    this.result = result;
     this.data = data;
   }
 

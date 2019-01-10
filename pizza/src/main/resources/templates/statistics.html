@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizzas</title>
+</head>
+<body>
+<h1>Most wanted pizzas</h1>
+<ul th:each="pizza: ${pizzas}" >
+    <li th:text="*{pizza}"></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body>
+<div th:object="${order}">
+<div th:text="*{id}"></div>
+<div th:text="*{name}"></div>
+<div th:text="*{address}"></div>
+<div th:text="*{pizza}"></div>
+</div>
+</body>
+</html>
